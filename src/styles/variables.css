@@ -1,0 +1,97 @@
+:root,
+[data-theme="dark"] {
+  /* Brand */
+  --primary: #6C47FF;
+  --primary-hover: #5A35F0;
+  --primary-soft: rgba(108, 71, 255, 0.16);
+  --primary-border: rgba(108, 71, 255, 0.38);
+
+  /* Surfaces */
+  --bg: #0D0B1A;
+  --bg-elevated: #141126;
+  --surface: #1E1A38;
+  --surface-hover: #262147;
+  --surface-muted: #18142E;
+  --sidebar-bg: #120F24;
+  --input-bg: #151229;
+
+  /* Text */
+  --text: #F4F3FA;
+  --text-secondary: #B7B3CE;
+  --text-muted: #847EA3;
+  --text-on-primary: #FFFFFF;
+
+  /* Borders & Shadows */
+  --border: #2C274D;
+  --border-strong: #3C3566;
+  --shadow-sm: 0 2px 8px rgba(4, 3, 12, 0.35);
+  --shadow-md: 0 10px 28px rgba(4, 3, 12, 0.45);
+  --shadow-lg: 0 20px 48px rgba(4, 3, 12, 0.6);
+
+  /* Semantic */
+  --success: #22C55E;
+  --success-soft: rgba(34, 197, 94, 0.15);
+  --warning: #F59E0B;
+  --warning-soft: rgba(245, 158, 11, 0.16);
+  --danger: #EF4444;
+  --danger-soft: rgba(239, 68, 68, 0.16);
+  --info: #38BDF8;
+  --info-soft: rgba(56, 189, 248, 0.15);
+
+  /* Exam Palette */
+  --palette-not-visited: #2B264A;
+  --palette-not-answered: #EF4444;
+  --palette-answered: #22C55E;
+  --palette-marked: #A855F7;
+  --palette-answered-marked: #3B82F6;
+
+  /* Layout & Radii */
+  --sidebar-width: 260px;
+  --topbar-height: 64px;
+  --bottom-nav-height: 66px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition: 0.18s ease;
+}
+
+[data-theme="light"] {
+  --primary: #6C47FF;
+  --primary-hover: #5832EB;
+  --primary-soft: rgba(108, 71, 255, 0.1);
+  --primary-border: rgba(108, 71, 255, 0.28);
+
+  --bg: #F6F5FB;
+  --bg-elevated: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-hover: #F1EFFB;
+  --surface-muted: #ECEAF7;
+  --sidebar-bg: #FFFFFF;
+  --input-bg: #F8F7FC;
+
+  --text: #16122B;
+  --text-secondary: #4D476B;
+  --text-muted: #767094;
+  --text-on-primary: #FFFFFF;
+
+  --border: #E2DFF0;
+  --border-strong: #CCC6E5;
+  --shadow-sm: 0 2px 8px rgba(22, 18, 43, 0.05);
+  --shadow-md: 0 10px 24px rgba(22, 18, 43, 0.08);
+  --shadow-lg: 0 20px 44px rgba(22, 18, 43, 0.12);
+
+  --success: #16A34A;
+  --success-soft: rgba(22, 163, 74, 0.12);
+  --warning: #D97706;
+  --warning-soft: rgba(217, 119, 6, 0.12);
+  --danger: #DC2626;
+  --danger-soft: rgba(220, 38, 38, 0.11);
+  --info: #0284C7;
+  --info-soft: rgba(2, 132, 199, 0.11);
+
+  --palette-not-visited: #E2DFF0;
+}
