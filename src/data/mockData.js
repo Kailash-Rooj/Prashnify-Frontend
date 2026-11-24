@@ -6,6 +6,73 @@ export const EXAMS_LIST = [
   { id: 'cuet-pg', name: 'CUET PG', fullName: 'CUET PG Life Sciences & Biotech', aspirants: '35,800+', papers: 20, active: true }
 ];
 
+export const SUBJECTS_WITH_SUBTOPICS = [
+  {
+    id: 'immunology',
+    name: 'Immunology',
+    questionCount: 145,
+    accuracy: 64,
+    subtopics: [
+      { id: 'imm-ab', name: 'Antibody Structure & Isotypes', count: 32, accuracy: 78, difficulty: 'Easy' },
+      { id: 'imm-mhc', name: 'MHC Class I & II Antigen Presentation', count: 28, accuracy: 58, difficulty: 'Moderate' },
+      { id: 'imm-hyp', name: 'Hypersensitivity (Types I–IV)', count: 24, accuracy: 52, difficulty: 'Moderate' },
+      { id: 'imm-comp', name: 'Complement Pathways', count: 31, accuracy: 49, difficulty: 'Difficult' },
+      { id: 'imm-vdj', name: 'V(D)J Recombination & B-Cell Maturation', count: 30, accuracy: 68, difficulty: 'Difficult' }
+    ]
+  },
+  {
+    id: 'molecular-biology',
+    name: 'Molecular Biology',
+    questionCount: 210,
+    accuracy: 79,
+    subtopics: [
+      { id: 'mol-rep', name: 'DNA Replication (Prokaryotic & Eukaryotic)', count: 50, accuracy: 84, difficulty: 'Moderate' },
+      { id: 'mol-trans', name: 'Transcription & RNA Processing', count: 48, accuracy: 76, difficulty: 'Moderate' },
+      { id: 'mol-trsl', name: 'Translation & Genetic Code', count: 42, accuracy: 81, difficulty: 'Easy' },
+      { id: 'mol-rep2', name: 'DNA Repair & Recombination', count: 36, accuracy: 69, difficulty: 'Difficult' },
+      { id: 'mol-reg', name: 'Gene Regulation & Operons', count: 34, accuracy: 74, difficulty: 'Moderate' }
+    ]
+  },
+  {
+    id: 'biochemistry',
+    name: 'Biochemistry',
+    questionCount: 185,
+    accuracy: 71,
+    subtopics: [
+      { id: 'bio-enz', name: 'Enzyme Kinetics & Inhibition', count: 44, accuracy: 62, difficulty: 'Moderate' },
+      { id: 'bio-met', name: 'Glycolysis, TCA & Oxidative Phosphorylation', count: 52, accuracy: 79, difficulty: 'Easy' },
+      { id: 'bio-aa', name: 'Amino Acids, pI & Titration Curves', count: 38, accuracy: 66, difficulty: 'Moderate' },
+      { id: 'bio-prot', name: 'Protein Folding & Ramachandran Plot', count: 29, accuracy: 59, difficulty: 'Difficult' },
+      { id: 'bio-nuc', name: 'Nucleotide & Lipid Metabolism', count: 22, accuracy: 75, difficulty: 'Moderate' }
+    ]
+  },
+  {
+    id: 'genetics',
+    name: 'Genetics',
+    questionCount: 160,
+    accuracy: 58,
+    subtopics: [
+      { id: 'gen-mend', name: 'Mendelian Ratios & Epistasis', count: 40, accuracy: 72, difficulty: 'Easy' },
+      { id: 'gen-pop', name: 'Population Genetics & Hardy-Weinberg', count: 34, accuracy: 54, difficulty: 'Moderate' },
+      { id: 'gen-map', name: 'Three-Point Cross & Linkage Mapping', count: 36, accuracy: 44, difficulty: 'Difficult' },
+      { id: 'gen-ped', name: 'Pedigree Analysis', count: 26, accuracy: 64, difficulty: 'Moderate' },
+      { id: 'gen-mut', name: 'Chromosomal Aberrations & Mutations', count: 24, accuracy: 57, difficulty: 'Moderate' }
+    ]
+  },
+  {
+    id: 'cell-biology',
+    name: 'Cell Biology',
+    questionCount: 130,
+    accuracy: 76,
+    subtopics: [
+      { id: 'cel-cyc', name: 'Cell Cycle & Checkpoints', count: 35, accuracy: 82, difficulty: 'Easy' },
+      { id: 'cel-sort', name: 'Protein Sorting & Vesicular Traffic', count: 33, accuracy: 71, difficulty: 'Moderate' },
+      { id: 'cel-sig', name: 'GPCR, RTK & Intracellular Signaling', count: 38, accuracy: 68, difficulty: 'Difficult' },
+      { id: 'cel-cyt', name: 'Cytoskeleton & Motor Proteins', count: 24, accuracy: 80, difficulty: 'Easy' }
+    ]
+  }
+];
+
 export const INITIAL_TEST_SERIES = [
   {
     id: 'ts-gatb-2027',
@@ -103,6 +170,76 @@ export const INITIAL_TEST_SERIES = [
   }
 ];
 
+export const INITIAL_TEST_HISTORY = [
+  {
+    id: 'res-101',
+    testId: 'full-mock-7',
+    title: 'Full Mock 7 — Molecular & Cell Biology Focus',
+    type: 'Test Series',
+    exam: 'GAT-B',
+    date: '2026-11-12',
+    score: 52.5,
+    maxScore: 76,
+    accuracy: 81,
+    correctCount: 41,
+    incorrectCount: 10,
+    unattemptedCount: 9,
+    air: 142,
+    percentile: 96.4,
+    countedForRank: true,
+    attemptNumber: 1,
+    subjectBreakdown: [
+      { subject: 'Molecular Biology', score: 26, maxScore: 34, correct: 22, incorrect: 4, unattempted: 2, accuracy: 85 },
+      { subject: 'Immunology', score: 9.5, maxScore: 14, correct: 7, incorrect: 3, unattempted: 2, accuracy: 70 },
+      { subject: 'Biochemistry', score: 10, maxScore: 14, correct: 7, incorrect: 2, unattempted: 3, accuracy: 78 },
+      { subject: 'Genetics', score: 7, maxScore: 14, correct: 5, incorrect: 1, unattempted: 2, accuracy: 83 }
+    ]
+  },
+  {
+    id: 'res-102',
+    testId: 'custom-imm-01',
+    title: 'Custom Test — Immunology & Genetics',
+    type: 'Custom Test',
+    exam: 'GAT-B',
+    date: '2026-11-15',
+    score: 14.25,
+    maxScore: 22,
+    accuracy: 73,
+    correctCount: 11,
+    incorrectCount: 4,
+    unattemptedCount: 1,
+    air: null,
+    percentile: 84.2,
+    countedForRank: false,
+    attemptNumber: 1,
+    subjectBreakdown: [
+      { subject: 'Immunology', score: 7.5, maxScore: 11, correct: 6, incorrect: 2, unattempted: 0, accuracy: 75 },
+      { subject: 'Genetics', score: 6.75, maxScore: 11, correct: 5, incorrect: 2, unattempted: 1, accuracy: 71 }
+    ]
+  },
+  {
+    id: 'res-103',
+    testId: 'ps-dna-rep',
+    title: 'DNA Replication — GAT-B Practice Set',
+    type: 'Practice Set',
+    exam: 'GAT-B',
+    date: '2026-11-17',
+    score: 48,
+    maxScore: 60,
+    accuracy: 88,
+    correctCount: 38,
+    incorrectCount: 5,
+    unattemptedCount: 7,
+    air: null,
+    percentile: 91.0,
+    countedForRank: false,
+    attemptNumber: 1,
+    subjectBreakdown: [
+      { subject: 'Molecular Biology', score: 48, maxScore: 60, correct: 38, incorrect: 5, unattempted: 7, accuracy: 88 }
+    ]
+  }
+];
+
 export const INITIAL_MENTORS = [
   {
     id: 'm-ananya',
@@ -157,12 +294,30 @@ export const INITIAL_MENTORS = [
   }
 ];
 
-export const INITIAL_NOTIFICATIONS = [
-  { id: 'n-1', category: 'Mentorship', title: 'Mentor Request Accepted!', message: 'Dr. Ananya Deshmukh accepted your 1-on-1 session for Fri 6:30 PM. Complete ₹299 payment to confirm.', time: '25m ago', read: false, link: '/request-status' },
-  { id: 'n-2', category: 'Tests', title: 'Full Mock 8 is Live Now', message: 'Attempt Full Mock 8 before Nov 22 to qualify for All-India Rank on your first attempt.', time: '2h ago', read: false, link: '/test-series' },
-  { id: 'n-3', category: 'Mentorship', title: 'Group Batch Reached 5 Students', message: 'IIT JAM BT Numericals Group is full (5/5). Complete your monthly payment to unlock session links.', time: '5h ago', read: false, link: '/mentorship-payment?mode=group&id=grp-jam-num' },
-  { id: 'n-4', category: 'Rewards', title: '7-Day Study Streak Badge Unlocked', message: 'You solved questions for 7 consecutive days. Keep your momentum going!', time: '1d ago', read: true, link: '/profile' }
-];
+export const LEADERBOARD_DATA = {
+  weekly: [
+    { rank: 1, name: 'Sneha Iyer', exam: 'GAT-B', score: 942, accuracy: 93, streak: 19, tests: 9 },
+    { rank: 2, name: 'Karan Verma', exam: 'IIT JAM BT', score: 918, accuracy: 91, streak: 14, tests: 8 },
+    { rank: 3, name: 'Ritika Sen', exam: 'GAT-B', score: 895, accuracy: 89, streak: 22, tests: 8 },
+    { rank: 4, name: 'Devansh Joshi', exam: 'CSIR NET LS', score: 860, accuracy: 86, streak: 11, tests: 7 },
+    { rank: 5, name: 'Aarav Sharma', exam: 'GAT-B', score: 834, accuracy: 84, streak: 9, tests: 7, isCurrentUser: true },
+    { rank: 6, name: 'Neha Banerjee', exam: 'GATE XL', score: 812, accuracy: 82, streak: 10, tests: 6 },
+    { rank: 7, name: 'Siddharth Rao', exam: 'IIT JAM BT', score: 790, accuracy: 80, streak: 6, tests: 6 }
+  ],
+  monthly: [
+    { rank: 1, name: 'Ritika Sen', exam: 'GAT-B', score: 3640, accuracy: 91, streak: 22, tests: 31 },
+    { rank: 2, name: 'Sneha Iyer', exam: 'GAT-B', score: 3590, accuracy: 92, streak: 19, tests: 29 },
+    { rank: 3, name: 'Karan Verma', exam: 'IIT JAM BT', score: 3420, accuracy: 89, streak: 14, tests: 28 },
+    { rank: 4, name: 'Aarav Sharma', exam: 'GAT-B', score: 3185, accuracy: 83, streak: 9, tests: 25, isCurrentUser: true },
+    { rank: 5, name: 'Neha Banerjee', exam: 'GATE XL', score: 3090, accuracy: 82, streak: 10, tests: 24 }
+  ],
+  allTime: [
+    { rank: 1, name: 'Sneha Iyer', exam: 'GAT-B', score: 12480, accuracy: 92, streak: 19, tests: 98 },
+    { rank: 2, name: 'Ritika Sen', exam: 'GAT-B', score: 11920, accuracy: 90, streak: 22, tests: 94 },
+    { rank: 3, name: 'Devansh Joshi', exam: 'CSIR NET LS', score: 11340, accuracy: 87, streak: 11, tests: 89 },
+    { rank: 12, name: 'Aarav Sharma', exam: 'GAT-B', score: 9420, accuracy: 82, streak: 9, tests: 71, isCurrentUser: true }
+  ]
+};
 
 export const INITIAL_PLANS = [
   { id: 'plan-1m', name: '1 Month Starter', months: 1, price: 499, originalPrice: 699, badge: 'Flexible', features: ['Unlimited Custom Tests & PYQs', 'All Practice Sets with Explanations', 'Full Analytics & Weak Topic Radar', '2 Live Test Series Mocks'] },

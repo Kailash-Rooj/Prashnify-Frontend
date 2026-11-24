@@ -1,9 +1,9 @@
 {
-  "name": "prashnify-phase-0-1",
+  "name": "prashnify-frontend",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Prashnify \u2014 Step 0 (Shared Layout, Theme & Styling) and Phase 1 (Start & Sign-up) Frontend",
+  "description": "Prashnify — EdTech Examination Preparation Platform Frontend (Step 0 + Phases 1 to 3)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,7 +13,8 @@
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0"
+    "react-router-dom": "^6.28.0",
+    "recharts": "^2.13.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.3",

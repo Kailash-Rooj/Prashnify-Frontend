@@ -68,7 +68,7 @@ export default function LandingPage() {
               <h2 style={{ fontSize: 28 }}>Everything you need to crack national exams</h2>
               <p className="text-secondary mt-sm">Designed to separate stress-free learning from strict timed exam simulation.</p>
             </div>
-            <Link to="/practice-sets" className="btn btn-outline btn-sm">View Practice Sets</Link>
+            <Link to="/create-test" className="btn btn-outline btn-sm">Create Custom Test</Link>
           </div>
           <div className="grid grid-4">
             {FEATURES.map((f) => {
@@ -122,7 +122,7 @@ export default function LandingPage() {
               <h2 style={{ fontSize: 28 }}>Learn directly from top rankers</h2>
               <p className="text-secondary mt-sm">1-on-1 sessions at ₹299/hr (pay after acceptance) or Group batches at ₹99/hr/student (starts at 5 students).</p>
             </div>
-            <Link to="/mentorship" className="btn btn-outline btn-sm">Explore Mentorship</Link>
+            <Link to="/login" className="btn btn-outline btn-sm">Get Started</Link>
           </div>
           <div className="grid grid-3">
             {mentors.map((m) => (
@@ -138,7 +138,7 @@ export default function LandingPage() {
                 <p className="text-sm text-secondary mb-md">{m.bio}</p>
                 <div className="flex-between">
                   <span className="text-sm flex-center"><Star size={14} className="text-warning" /> {m.rating} ({m.sessionsCompleted} sessions)</span>
-                  <Link to={`/mentor-booking/${m.id}`} className="btn btn-primary btn-sm">Book ₹299/hr</Link>
+                  <Link to="/login" className="btn btn-primary btn-sm">Book ₹299/hr</Link>
                 </div>
               </div>
             ))}
@@ -211,7 +211,7 @@ export default function LandingPage() {
             </div>
             <div className="flex gap-sm">
               <Link to="/login" className="btn btn-primary">Get Started <ArrowRight size={16} /></Link>
-              <Link to="/help" className="btn btn-secondary"><BookOpen size={16} /> Read FAQs</Link>
+              <Link to="/pricing" className="btn btn-secondary"><BookOpen size={16} /> View Pricing</Link>
             </div>
           </div>
         </div>

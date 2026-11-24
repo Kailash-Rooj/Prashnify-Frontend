@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { INITIAL_QUESTION_BANK } from '../data/mockQuestions';
 import {
   EXAMS_LIST,
   INITIAL_COUPONS,
   INITIAL_MENTORS,
-  INITIAL_NOTIFICATIONS,
   INITIAL_PLANS,
+  INITIAL_TEST_HISTORY,
   INITIAL_TEST_SERIES
 } from '../data/mockData';
 
@@ -39,26 +40,60 @@ export function AppProvider({ children }) {
     })
   );
 
+  const [questions, setQuestions] = useState(() => loadState('prashnify_questions', INITIAL_QUESTION_BANK));
   const [testSeries, setTestSeries] = useState(() => loadState('prashnify_test_series', INITIAL_TEST_SERIES));
-  const [mentors, setMentors] = useState(() => loadState('prashnify_mentors', INITIAL_MENTORS));
-  const [notifications, setNotifications] = useState(() => loadState('prashnify_notifications', INITIAL_NOTIFICATIONS));
-  const [plans, setPlans] = useState(() => loadState('prashnify_plans', INITIAL_PLANS));
-  const [coupons, setCoupons] = useState(() => loadState('prashnify_coupons', INITIAL_COUPONS));
-  const [exams, setExams] = useState(() => loadState('prashnify_exams', EXAMS_LIST));
+  const [testHistory, setTestHistory] = useState(() => loadState('prashnify_test_history', INITIAL_TEST_HISTORY));
+  const [savedQuestions, setSavedQuestions] = useState(() =>
+    loadState('prashnify_saved_questions', [
+      { questionId: 'GATB-DNA-001', note: 'Remember DnaA binds 9-mer repeats; DnaB is the helicase.' },
+      { questionId: 'IMM-003', note: 'MSQ trap: Type I is IgE mediated, not CD8+ T cells.' },
+      { questionId: 'BIO-001', note: 'Competitive inhibitor -> Km up, Vmax same.' }
+    ])
+  );
+  const [mentors] = useState(() => loadState('prashnify_mentors', INITIAL_MENTORS));
+  const [plans] = useState(() => loadState('prashnify_plans', INITIAL_PLANS));
+  const [coupons] = useState(() => loadState('prashnify_coupons', INITIAL_COUPONS));
+  const [exams] = useState(() => loadState('prashnify_exams', EXAMS_LIST));
+  const [activeExamConfig, setActiveExamConfig] = useState(() => loadState('prashnify_active_exam', null));
 
   useEffect(() => { localStorage.setItem('prashnify_user', JSON.stringify(user)); }, [user]);
+  useEffect(() => { localStorage.setItem('prashnify_questions', JSON.stringify(questions)); }, [questions]);
   useEffect(() => { localStorage.setItem('prashnify_test_series', JSON.stringify(testSeries)); }, [testSeries]);
-  useEffect(() => { localStorage.setItem('prashnify_mentors', JSON.stringify(mentors)); }, [mentors]);
-  useEffect(() => { localStorage.setItem('prashnify_notifications', JSON.stringify(notifications)); }, [notifications]);
-  useEffect(() => { localStorage.setItem('prashnify_plans', JSON.stringify(plans)); }, [plans]);
-  useEffect(() => { localStorage.setItem('prashnify_coupons', JSON.stringify(coupons)); }, [coupons]);
-  useEffect(() => { localStorage.setItem('prashnify_exams', JSON.stringify(exams)); }, [exams]);
+  useEffect(() => { localStorage.setItem('prashnify_test_history', JSON.stringify(testHistory)); }, [testHistory]);
+  useEffect(() => { localStorage.setItem('prashnify_saved_questions', JSON.stringify(savedQuestions)); }, [savedQuestions]);
+  useEffect(() => { localStorage.setItem('prashnify_active_exam', JSON.stringify(activeExamConfig)); }, [activeExamConfig]);
 
-  const addNotification = (notif) => {
-    setNotifications((prev) => [
-      { id: `n-${Date.now()}`, read: false, time: 'Just now', ...notif },
-      ...prev
-    ]);
+  const toggleBookmark = (questionId) => {
+    setSavedQuestions((prev) => {
+      const exists = prev.some((item) => item.questionId === questionId);
+      if (exists) return prev.filter((item) => item.questionId !== questionId);
+      return [{ questionId, note: '' }, ...prev];
+    });
+  };
+
+  const updateBookmarkNote = (questionId, note) => {
+    setSavedQuestions((prev) =>
+      prev.map((item) => (item.questionId === questionId ? { ...item, note } : item))
+    );
+  };
+
+  const recordTestResult = (resultObj) => {
+    setTestHistory((prev) => [resultObj, ...prev]);
+    if (resultObj.seriesId && resultObj.testId) {
+      setTestSeries((prev) =>
+        prev.map((series) => {
+          if (series.id !== resultObj.seriesId) return series;
+          return {
+            ...series,
+            tests: series.tests.map((t) =>
+              t.id === resultObj.testId
+                ? { ...t, status: 'Completed', attemptsUsed: (t.attemptsUsed || 0) + 1 }
+                : t
+            )
+          };
+        })
+      );
+    }
   };
 
   const enrollInSeries = (seriesId) => {
@@ -71,14 +106,17 @@ export function AppProvider({ children }) {
     <AppContext.Provider
       value={{
         user, setUser,
+        questions, setQuestions,
         testSeries, setTestSeries,
-        mentors, setMentors,
-        notifications, setNotifications,
-        plans, setPlans,
-        coupons, setCoupons,
-        exams, setExams,
-        addNotification,
-        enrollInSeries
+        testHistory, setTestHistory,
+        savedQuestions, setSavedQuestions,
+        mentors,
+        plans,
+        coupons,
+        exams,
+        activeExamConfig, setActiveExamConfig,
+        toggleBookmark, updateBookmarkNote,
+        recordTestResult, enrollInSeries
       }}
     >
       {children}
