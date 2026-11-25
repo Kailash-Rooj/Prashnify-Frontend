@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import PublicLayout from '../layouts/PublicLayout';
 import StudentLayout from '../layouts/StudentLayout';
+import MentorLayout from '../layouts/MentorLayout';
 
 // Phase 1: Public / Start & Sign-up (Pages 1–6)
 import LandingPage from '../pages/public/LandingPage';
@@ -29,10 +30,16 @@ import LeaderboardPage from '../pages/student/LeaderboardPage';
 import TestSeriesPage from '../pages/student/TestSeriesPage';
 import SeriesResultPage from '../pages/student/SeriesResultPage';
 
+// Phase 4: Mentorship (Pages 20–24)
+import MentorshipPage from '../pages/mentorship/MentorshipPage';
+import MentorBookingPage from '../pages/mentorship/MentorBookingPage';
+import RequestStatusPage from '../pages/mentorship/RequestStatusPage';
+import MentorshipPaymentPage from '../pages/mentorship/MentorshipPaymentPage';
+import MentorDashboardPage from '../pages/mentor/MentorDashboardPage';
+
 export default function AppRoutes() {
   return (
     <Routes>
-      {/* Phase 1: Public Area (No Authenticated Sidebar) */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -42,11 +49,10 @@ export default function AppRoutes() {
         <Route path="/choose-exam" element={<ChooseExamPage />} />
       </Route>
 
-      {/* Full-Screen Exam Screen (Page 10 — No Sidebar) */}
+      {/* Full-screen exam page */}
       <Route path="/exam" element={<ExamScreenPage />} />
       <Route path="/exam/:mode/:id" element={<ExamScreenPage />} />
 
-      {/* Phases 2–3: Student Application Area (With Left Sidebar + Mobile Bottom Nav) */}
       <Route element={<StudentLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/create-test" element={<CreateTestPage />} />
@@ -61,10 +67,18 @@ export default function AppRoutes() {
         <Route path="/test-series" element={<TestSeriesPage />} />
         <Route path="/series-result" element={<SeriesResultPage />} />
         <Route path="/series-result/:resultId" element={<SeriesResultPage />} />
+        <Route path="/mentorship" element={<MentorshipPage />} />
+        <Route path="/mentor-booking" element={<MentorBookingPage />} />
+        <Route path="/mentor-booking/:mentorId" element={<MentorBookingPage />} />
+        <Route path="/request-status" element={<RequestStatusPage />} />
+        <Route path="/mentorship-payment" element={<MentorshipPaymentPage />} />
       </Route>
 
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route element={<MentorLayout />}>
+        <Route path="/mentor/dashboard" element={<MentorDashboardPage />} />
+      </Route>
+
+      <Route path="*" element={<PublicLayout><LandingPage /></PublicLayout>} />
     </Routes>
   );
 }

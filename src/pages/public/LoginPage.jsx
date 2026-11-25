@@ -108,13 +108,18 @@ export default function LoginPage() {
           <div className="text-xs text-muted mb-sm" style={{ textAlign: 'center' }}>
             Frontend Demo — Instant Portal Access (No Backend Auth)
           </div>
-          <button type="button" className="btn btn-secondary btn-sm" style={{ width: '100%' }} onClick={() => quickEnterPortal('student', '/dashboard')}>
-            <User size={14} /> Enter Student Dashboard
-          </button>
+          <div className="grid grid-3" style={{ gap: 8 }}>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => quickEnterPortal('student', '/dashboard')}>
+              <User size={14} /> Student
+            </button>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => quickEnterPortal('mentor', '/mentor/dashboard')}>
+              <GraduationCap size={14} /> Mentor
+            </button>
+          </div>
         </div>
 
         <p className="text-xs text-muted mt-md" style={{ textAlign: 'center' }}>
-          By continuing you agree to our <span className="text-primary">Terms</span> and <span className="text-primary">Privacy Policy</span>.
+          By continuing, you agree to use the Prashnify learning platform responsibly.
         </p>
       </div>
     </div>

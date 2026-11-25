@@ -73,6 +73,57 @@ export const SUBJECTS_WITH_SUBTOPICS = [
   }
 ];
 
+export const INITIAL_PRACTICE_SETS = [
+  {
+    id: 'ps-dna-rep',
+    title: 'DNA Replication — GAT-B Practice Set',
+    exam: 'GAT-B',
+    topic: 'DNA Replication',
+    subject: 'Molecular Biology',
+    questionCount: 50,
+    difficultyMix: { Easy: 17, Moderate: 17, Difficult: 16 },
+    estimatedMinutes: 45,
+    completedCount: 18,
+    description: 'Complete 50-question single-topic mastery set covering OriC, Pol III holoenzyme, proofreading, telomerase, and eukaryotic licensing.'
+  },
+  {
+    id: 'ps-immunology',
+    title: 'Immunology Core Concepts Set',
+    exam: 'GAT-B',
+    topic: 'Immunology',
+    subject: 'Immunology',
+    questionCount: 6,
+    difficultyMix: { Easy: 2, Moderate: 3, Difficult: 1 },
+    estimatedMinutes: 12,
+    completedCount: 4,
+    description: 'Focused single-topic learning set on antibody isotypes, MHC presentation, complement cascade, and hypersensitivity.'
+  },
+  {
+    id: 'ps-enzyme-kinetics',
+    title: 'Enzyme Kinetics & Metabolism Drill',
+    exam: 'IIT JAM BT',
+    topic: 'Enzyme Kinetics',
+    subject: 'Biochemistry',
+    questionCount: 6,
+    difficultyMix: { Easy: 2, Moderate: 3, Difficult: 1 },
+    estimatedMinutes: 15,
+    completedCount: 0,
+    description: 'Step-by-step practice on Michaelis-Menten plots, inhibition types, turnover numbers, and metabolic regulation.'
+  },
+  {
+    id: 'ps-genetics',
+    title: 'Mendelian & Population Genetics Set',
+    exam: 'CSIR NET LS',
+    topic: 'Mendelian Genetics',
+    subject: 'Genetics',
+    questionCount: 6,
+    difficultyMix: { Easy: 2, Moderate: 3, Difficult: 1 },
+    estimatedMinutes: 15,
+    completedCount: 2,
+    description: 'Master epistasis ratios, Hardy-Weinberg numericals, linkage mapping, and pedigree deduction in learning mode.'
+  }
+];
+
 export const INITIAL_TEST_SERIES = [
   {
     id: 'ts-gatb-2027',
@@ -294,6 +345,145 @@ export const INITIAL_MENTORS = [
   }
 ];
 
+export const INITIAL_GROUP_BATCHES = [
+  {
+    id: 'grp-gatb-mol',
+    title: 'GAT-B Molecular Biology & Immunology Cohort',
+    mentorId: 'm-ananya',
+    mentorName: 'Dr. Ananya Deshmukh',
+    exam: 'GAT-B',
+    schedule: 'Tue & Thu · 7:00 PM IST (8 hrs/month)',
+    pricePerHour: 99,
+    hoursPerMonth: 8,
+    monthlyTotal: 792,
+    minStudents: 5,
+    maxStudents: 8,
+    joinedStudents: 4,
+    userJoined: false,
+    userPaid: false,
+    status: 'Filling (4/5)'
+  },
+  {
+    id: 'grp-jam-num',
+    title: 'IIT JAM BT Numericals & Biochemistry Group',
+    mentorId: 'm-rohan',
+    mentorName: 'Rohan Kulkarni',
+    exam: 'IIT JAM BT',
+    schedule: 'Sat & Sun · 11:00 AM IST (8 hrs/month)',
+    pricePerHour: 99,
+    hoursPerMonth: 8,
+    monthlyTotal: 792,
+    minStudents: 5,
+    maxStudents: 8,
+    joinedStudents: 5,
+    userJoined: true,
+    userPaid: false,
+    status: 'Ready to Start (5/5)'
+  },
+  {
+    id: 'grp-csir-gen',
+    title: 'CSIR NET Genetics & Pedigree Problem Solving',
+    mentorId: 'm-meera',
+    mentorName: 'Meera Nair',
+    exam: 'CSIR NET LS',
+    schedule: 'Mon & Wed · 8:00 PM IST (6 hrs/month)',
+    pricePerHour: 99,
+    hoursPerMonth: 6,
+    monthlyTotal: 594,
+    minStudents: 5,
+    maxStudents: 8,
+    joinedStudents: 2,
+    userJoined: false,
+    userPaid: false,
+    status: 'Filling (2/5)'
+  }
+];
+
+export const INITIAL_MENTOR_REQUESTS = [
+  {
+    id: 'req-401',
+    studentName: 'Aarav Sharma',
+    mentorId: 'm-ananya',
+    mentorName: 'Dr. Ananya Deshmukh',
+    day: 'Fri, Nov 20',
+    time: '6:30 PM',
+    topic: 'Mock 7 error analysis & DNA Replication revision strategy',
+    amount: 299,
+    status: 'Accepted',
+    paid: false,
+    createdAt: '2026-11-18'
+  },
+  {
+    id: 'req-402',
+    studentName: 'Aarav Sharma',
+    mentorId: 'm-rohan',
+    mentorName: 'Rohan Kulkarni',
+    day: 'Sat, Nov 21',
+    time: '4:00 PM',
+    topic: 'Enzyme kinetics Km/Vmax numericals',
+    amount: 299,
+    status: 'Waiting',
+    paid: false,
+    createdAt: '2026-11-19'
+  },
+  {
+    id: 'req-403',
+    studentName: 'Priya Chatterjee',
+    mentorId: 'm-ananya',
+    mentorName: 'Dr. Ananya Deshmukh',
+    day: 'Sun, Nov 22',
+    time: '5:00 PM',
+    topic: 'Immunology complement pathways doubt clearing',
+    amount: 299,
+    status: 'Waiting',
+    paid: false,
+    createdAt: '2026-11-19'
+  }
+];
+
+export const INITIAL_NOTIFICATIONS = [
+  { id: 'n-1', category: 'Mentorship', title: 'Mentor Request Accepted!', message: 'Dr. Ananya Deshmukh accepted your 1-on-1 session for Fri 6:30 PM. Complete ₹299 payment to confirm.', time: '25m ago', read: false, link: '/request-status' },
+  { id: 'n-2', category: 'Tests', title: 'Full Mock 8 is Live Now', message: 'Attempt Full Mock 8 before Nov 22 to qualify for All-India Rank on your first attempt.', time: '2h ago', read: false, link: '/test-series' },
+  { id: 'n-3', category: 'Mentorship', title: 'Group Batch Reached 5 Students', message: 'IIT JAM BT Numericals Group is full (5/5). Complete your monthly payment to unlock session links.', time: '5h ago', read: false, link: '/mentorship-payment?mode=group&id=grp-jam-num' },
+  { id: 'n-4', category: 'Rewards', title: '7-Day Study Streak Badge Unlocked', message: 'You solved questions for 7 consecutive days. Keep your momentum going!', time: '1d ago', read: true, link: '/profile' }
+];
+
+export const INITIAL_BLOGS = [
+  {
+    id: 'blog-1',
+    title: 'How to Score 160+ in GAT-B 2027: A 90-Day Topic Priority Blueprint',
+    category: 'Exam Strategy',
+    author: 'Dr. Ananya Deshmukh',
+    date: '2026-11-14',
+    readTime: '6 min read',
+    status: 'Published',
+    excerpt: 'Focus 60% of your revision hours on high-yield Molecular Biology, Biochemistry, and Immunology chapters backed by 5-year PYQ weightage.',
+    content: 'Analyzing the last five years of GAT-B papers reveals that Molecular Biology, Biochemistry, Immunology, and Genetics consistently account for over 55% of Part B marks. Start every morning with a 25-question single-topic Practice Set in learning mode to fix conceptual gaps immediately, then validate speed every Sunday inside a live Test Series window.'
+  },
+  {
+    id: 'blog-2',
+    title: 'Mastering MSQ & NAT Questions Without Losing Negative Marks',
+    category: 'Test Taking',
+    author: 'Rohan Kulkarni',
+    date: '2026-11-10',
+    readTime: '5 min read',
+    status: 'Published',
+    excerpt: 'MSQ and NAT sections carry zero negative marking—learn how to structure your elimination checklist and avoid partial-selection traps.',
+    content: 'In Prashnify and national biotech exams, MSQs award +2 only when every correct option is chosen, with zero negative marks. Never skip an MSQ or NAT blank when time permits. Evaluate each option independently as a True/False statement and double-check unit conversions on NAT numericals.'
+  },
+  {
+    id: 'blog-3',
+    title: 'DNA Replication High-Yield Revision Checklist: Prokaryotes vs Eukaryotes',
+    category: 'Study Notes',
+    author: 'Meera Nair',
+    date: '2026-11-05',
+    readTime: '7 min read',
+    status: 'Published',
+    excerpt: 'A crisp comparison table of DNA polymerases, helicases, clamps, and licensing factors frequently tested in GAT-B and CSIR NET.',
+    content: 'Keep E. coli DNA Pol I vs Pol III roles distinct from eukaryotic Pol alpha, delta, and epsilon. Pay special attention to beta-clamp vs PCNA, DnaB vs MCM2-7 helicase, and how Dam methylation guides MutS/MutL/MutH mismatch repair.'
+  }
+];
+
 export const LEADERBOARD_DATA = {
   weekly: [
     { rank: 1, name: 'Sneha Iyer', exam: 'GAT-B', score: 942, accuracy: 93, streak: 19, tests: 9 },
@@ -329,4 +519,96 @@ export const INITIAL_COUPONS = [
   { code: 'PRASH20', discountType: 'percent', value: 20, active: true, uses: 312 },
   { code: 'GATB100', discountType: 'flat', value: 100, active: true, uses: 145 },
   { code: 'CAMPUS15', discountType: 'percent', value: 15, active: true, uses: 89 }
+];
+
+export const INITIAL_STUDENTS_ADMIN = [
+  { id: 'stu-1', name: 'Aarav Sharma', email: 'aarav.sharma@student.in', exam: 'GAT-B', plan: '6 Months Pro', status: 'Active', testsTaken: 25, joined: '2026-08-12' },
+  { id: 'stu-2', name: 'Sneha Iyer', email: 'sneha.iyer@student.in', exam: 'GAT-B', plan: '12 Months Ranker', status: 'Active', testsTaken: 98, joined: '2026-05-03' },
+  { id: 'stu-3', name: 'Karan Verma', email: 'karan.v@student.in', exam: 'IIT JAM BT', plan: 'Free', status: 'Active', testsTaken: 8, joined: '2026-10-21' },
+  { id: 'stu-4', name: 'Priya Chatterjee', email: 'priya.c@student.in', exam: 'CSIR NET LS', plan: '1 Month Starter', status: 'Active', testsTaken: 14, joined: '2026-11-01' },
+  { id: 'stu-5', name: 'Devansh Joshi', email: 'devansh.j@student.in', exam: 'GATE XL', plan: '6 Months Pro', status: 'Paused', testsTaken: 31, joined: '2026-07-19' }
+];
+
+export const INITIAL_PENDING_MENTORS = [
+  {
+    id: 'app-m1',
+    name: 'Dr. Vikramaditya Bose',
+    email: 'vikram.bose@alumni.iisc.in',
+    exam: 'CSIR NET LS',
+    rank: 'AIR 9 — CSIR NET JRF',
+    institute: 'TIFR Mumbai',
+    appliedOn: '2026-11-16',
+    checklist: { idVerified: true, rankVerified: true, demoReviewed: false, bankVerified: false }
+  },
+  {
+    id: 'app-m2',
+    name: 'Shruti Agarwal',
+    email: 'shruti.ag@iitd.ac.in',
+    exam: 'IIT JAM BT',
+    rank: 'AIR 15 — IIT JAM BT',
+    institute: 'IIT Delhi',
+    appliedOn: '2026-11-18',
+    checklist: { idVerified: true, rankVerified: false, demoReviewed: false, bankVerified: false }
+  }
+];
+
+export const INITIAL_PAYOUTS = [
+  { id: 'pay-1', mentorName: 'Dr. Ananya Deshmukh', sessions: 14, grossAmount: 4186, platformFeePct: 15, status: 'Pending', period: 'Nov 1–15, 2026' },
+  { id: 'pay-2', mentorName: 'Rohan Kulkarni', sessions: 11, grossAmount: 3289, platformFeePct: 15, status: 'Paid', period: 'Nov 1–15, 2026' },
+  { id: 'pay-3', mentorName: 'Meera Nair', sessions: 9, grossAmount: 2691, platformFeePct: 15, status: 'Pending', period: 'Nov 1–15, 2026' }
+];
+
+export const INITIAL_REFUNDS = [
+  { id: 'ref-1', studentName: 'Karan Verma', item: 'GAT-B Test Series Duplicate Order', amount: 799, reason: 'Accidental double checkout', status: 'Pending', date: '2026-11-18' },
+  { id: 'ref-2', studentName: 'Neha Banerjee', item: '1-on-1 Session Cancelled by Mentor', amount: 299, reason: 'Mentor unavailable', status: 'Approved', date: '2026-11-15' }
+];
+
+export const INITIAL_SUPPORT_TICKETS = [
+  { id: 'TKT-2041', name: 'Priya Chatterjee', email: 'priya.c@student.in', category: 'Test Series', subject: 'Retake rank clarification on Full Mock 7', message: 'I retook Full Mock 7 yesterday and scored higher, why did my All-India Rank stay the same?', status: 'Open', createdAt: '2026-11-18', replies: [] },
+  { id: 'TKT-2040', name: 'Karan Verma', email: 'karan.v@student.in', category: 'Billing', subject: 'Coupon PRASH20 not applied on renewal', message: 'I forgot to enter PRASH20 during checkout. Can you help?', status: 'In Progress', createdAt: '2026-11-17', replies: [{ by: 'Support Team', text: 'We are reviewing your invoice and will update you shortly.', time: '2026-11-17' }] }
+];
+
+export const FAQ_CATEGORIES = [
+  {
+    category: 'Getting Started',
+    items: [
+      { q: 'How do I choose or switch my target exam?', a: 'You can pick your primary exam during onboarding or anytime from the Choose Exam or Profile page.' },
+      { q: 'What is included in the Free plan?', a: 'Free accounts get daily custom practice quizzes, selected PYQs, and sample Practice Sets. Upgrade anytime for full All-India Test Series access.' }
+    ]
+  },
+  {
+    category: 'Practice & Tests',
+    items: [
+      { q: 'What is the difference between Practice Sets and Test Series?', a: 'Practice Sets focus on a single topic in learning mode (pause allowed, instant Check Answer with explanation). Test Series simulate real exams with mixed topics, strict non-pausable timers, and 3-warning window monitoring.' },
+      { q: 'How are MCQ, MSQ, and NAT questions marked?', a: 'Default marking is MCQ (+1 / -0.25), MSQ (+2 only if all correct options are selected, no partial or negative marks), and NAT (+2, no negative marks).' }
+    ]
+  },
+  {
+    category: 'Test Series & Ranking',
+    items: [
+      { q: 'Does retaking a Test Series mock improve my All-India Rank?', a: 'No. Only your first attempt inside the live test window counts toward All-India Rank and percentile. Retakes are unlimited for practice and revision.' },
+      { q: 'What happens if I switch tabs during a live Test Series exam?', a: 'Leaving the exam window is recorded as a warning. After 3 warnings, the test is automatically submitted to maintain fair ranking.' }
+    ]
+  },
+  {
+    category: 'Mentorship',
+    items: [
+      { q: 'When am I charged for a 1-on-1 mentorship session?', a: 'One-on-one sessions cost ₹299 for 1 hour (one day at a time). You only pay AFTER the mentor accepts your requested day and time.' },
+      { q: 'How does Group Mentorship billing work?', a: 'Group mentorship is ₹99/hour per student, billed monthly. A group starts only when 5 students join—if it does not reach 5 students, you pay nothing.' }
+    ]
+  },
+  {
+    category: 'Billing & Refunds',
+    items: [
+      { q: 'Which payment methods are supported?', a: 'Prashnify supports UPI, Credit/Debit Cards, and Netbanking. (In this frontend build, checkout is simulated with no real charges.)' },
+      { q: 'How do I apply a coupon code?', a: 'Enter a valid coupon code like PRASH20 or GATB100 on the Checkout page before completing payment.' }
+    ]
+  },
+  {
+    category: 'Account & Technical',
+    items: [
+      { q: 'How do I switch between Dark and Light mode?', a: 'Use the theme toggle in the top bar or choose Dark, Light, or Auto in Settings. Your preference is saved automatically.' },
+      { q: 'Is my progress saved if I refresh the browser?', a: 'Yes, bookmarks, notes, test history, mentor requests, and admin edits are persisted in LocalStorage.' }
+    ]
+  }
 ];
