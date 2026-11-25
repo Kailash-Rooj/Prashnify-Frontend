@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
+  Award,
   BarChart3,
+  Bell,
   Bookmark,
   BookOpen,
   Compass,
-  CreditCard,
   FileCheck2,
   FilePlus2,
+  Gift,
+  GraduationCap,
+  HelpCircle,
   History,
   Home,
+  Layers,
   Menu,
   Moon,
+  Newspaper,
+  Settings,
+  Shield,
   Sparkles,
   Sun,
   Target,
   Trophy,
+  User,
+  Users,
   X
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -28,7 +38,8 @@ const STUDENT_SECTIONS = [
       { to: '/dashboard', label: 'Dashboard', icon: Home },
       { to: '/create-test', label: 'Create Test', icon: FilePlus2 },
       { to: '/test-series', label: 'Test Series', icon: FileCheck2 },
-      { to: '/pyqs', label: 'PYQs', icon: BookOpen }
+      { to: '/pyqs', label: 'PYQs', icon: BookOpen },
+      { to: '/mentorship', label: 'Mentorship', icon: Users }
     ]
   },
   {
@@ -43,19 +54,30 @@ const STUDENT_SECTIONS = [
     ]
   },
   {
+    label: 'Community',
+    items: [
+    ]
+  },
+  {
+    label: 'Join Prashnify',
+    items: [
+    ]
+  },
+  {
     label: 'Account',
     items: [
-      { to: '/choose-exam', label: 'Switch Exam', icon: Compass },
-      { to: '/pricing', label: 'Plans & Pricing', icon: CreditCard }
+      { to: '/choose-exam', label: 'Switch Exam', icon: Compass }
     ]
   }
 ];
 
 export default function StudentLayout({ children }) {
   const { resolvedTheme, toggleTheme } = useTheme();
-  const { user } = useApp();
+  const { user, notifications } = useApp();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
 
   const renderSidebarNav = (onLinkClick) => (
     <div className="sidebar-sections">
@@ -74,12 +96,25 @@ export default function StudentLayout({ children }) {
                 >
                   <Icon size={17} />
                   <span>{item.label}</span>
+                  {item.to === '/notifications' && unreadCount > 0 && (
+                    <span className="sidebar-badge">{unreadCount}</span>
+                  )}
                 </NavLink>
               );
             })}
           </div>
         </div>
       ))}
+
+      <div style={{ borderTop: '1px solid var(--border)', paddingTop: 14 }}>
+        <div className="sidebar-section-label">Switch Portal</div>
+        <div className="sidebar-nav-list">
+          <Link to="/mentor/dashboard" className="sidebar-link" onClick={onLinkClick}>
+            <GraduationCap size={17} />
+            <span>Mentor Dashboard</span>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 
@@ -114,7 +149,32 @@ export default function StudentLayout({ children }) {
               {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
 
-            <div className="flex gap-sm" style={{ alignItems: 'center' }}>
+            <Link to="/dashboard" className="btn btn-ghost btn-icon" style={{ position: 'relative' }} aria-label="Notifications">
+              <Bell size={18} />
+              {unreadCount > 0 && (
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: 4,
+                    right: 4,
+                    width: 16,
+                    height: 16,
+                    borderRadius: '50%',
+                    background: 'var(--danger)',
+                    color: '#fff',
+                    fontSize: 10,
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  {unreadCount}
+                </span>
+              )}
+            </Link>
+
+            <Link to="/dashboard" className="flex gap-sm" style={{ alignItems: 'center' }}>
               <div className="avatar">
                 {user.name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase()}
               </div>
@@ -122,7 +182,7 @@ export default function StudentLayout({ children }) {
                 <div className="text-sm font-semibold">{user.name}</div>
                 <div className="text-xs text-muted">{user.streak}-day streak</div>
               </div>
-            </div>
+            </Link>
           </div>
         </header>
 
@@ -131,7 +191,7 @@ export default function StudentLayout({ children }) {
         </main>
       </div>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation: Home, Create, PYQs, Mentors, Menu */}
       <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
         <Link to="/dashboard" className={`mobile-nav-item ${location.pathname === '/dashboard' ? 'active' : ''}`}>
           <Home size={19} />
@@ -145,9 +205,9 @@ export default function StudentLayout({ children }) {
           <BookOpen size={19} />
           <span>PYQs</span>
         </Link>
-        <Link to="/test-series" className={`mobile-nav-item ${location.pathname === '/test-series' ? 'active' : ''}`}>
-          <FileCheck2 size={19} />
-          <span>Series</span>
+        <Link to="/mentorship" className={`mobile-nav-item ${location.pathname.startsWith('/mentor') && !location.pathname.startsWith('/mentor/dashboard') ? 'active' : ''}`}>
+          <Users size={19} />
+          <span>Mentors</span>
         </Link>
         <button type="button" className="mobile-nav-item" onClick={() => setDrawerOpen(true)}>
           <Menu size={19} />
